@@ -57,5 +57,5 @@ E' il processo tramite il quale la cronologia biforcata in diversi merge viene r
 
 ###### fast-forward merge
 Si può utilizzare quando esiste un percorso lineare dal branch corrente al branch di destinazione (il branch di destinazione deriva dal branch corrente). Semplicemente git muove il puntatore in avanti al branch di destinazione.
-![alt-text](img/fast-forward1.png "Prima")
-![alt-text](img/fast-forward1.png "Dopo")
+![alt-text](img/fast-forward1.png "Prima" = 100x)
+![alt-text](img/fast-forward1.png "Dopo" = 100x)

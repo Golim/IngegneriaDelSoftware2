@@ -1,0 +1,58 @@
+====================== GIT ======================
+
+SETUP A REPOSITORY
+
+/**
+* Crea un nuovo repository
+**/
+git init
+
+/**
+* 
+**/
+git status
+
+/**
+* Imposta chi sono io
+**/
+git config --global user.name "name"
+git config --global user.email email
+
+/**
+* Imposta l'editor di testo preferito
+**/
+git config --global core.editor nome_editor
+
+/**
+* Maggiori informazioni su git config:
+**/
+https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
+
+/**
+* Organizza le modifiche al progetto che verranno salvate con un successivo commit
+**/
+git add
+
+/**
+* Cattura uno snapshot del progetto con le modifiche salvate al momento
+**/
+git commit
+	parameters:
+		-m "Messaggio"
+		
+
+/**
+* 
+**/
+
+/**
+* 
+**/
+
+/**
+* 
+**/
+
+/**
+* 
+**/

@@ -1,7 +1,6 @@
 # Riassunto GIT
-***
+
 ## Comandi
-___
 
 ##### git init
 Crea un nuovo repository.
@@ -36,11 +35,11 @@ Permette di creare, listare, rinominare ed eliminare branch:
 - Creare: git branch "nome"
 - Cancellare: git branch -d "nome" (-D per forzare un branch non ancora completamente merged)
 
-##### git merge
+##### git merge <nome_branch>
+Unisce il branch passato come argomento al branch attuale (precedentemente impostato con git checkout).
 
 
 
-***
 ## Definizioni
 ___
 #### branch
@@ -57,5 +56,13 @@ E' il processo tramite il quale la cronologia biforcata in diversi merge viene r
 
 ###### fast-forward merge
 Si può utilizzare quando esiste un percorso lineare dal branch corrente al branch di destinazione (il branch di destinazione deriva dal branch corrente). Semplicemente git muove il puntatore in avanti al branch di destinazione.
-![alt-text](img/fast-forward1.png "Prima" = 100x)
-![alt-text](img/fast-forward1.png "Dopo" = 100x)
+![alt-text](img/fast-forward1.png "Prima")
+![alt-text](img/fast-forward1.png "Dopo")
+
+###### 3-way-merge
+Il fast-forward merge non è possibile se i branch hanno delle divergenze. Questo metodo utilizza un terzo merge in cui unire i due branch. E' più utilizzato per unire feature molto grandi e di lunga durata di sviluppo.
+![alt-text](img/3-way_before.png "Prima")
+![alt-text](img/3-way_after.png "Dopo")
+
+###### Risolvere i conflitti di merging
+Se in entrambi i branch che si intende unire si è modificata la stessa parte dello stesso file, git non sarà in grado di capire quale mantenere. In questo caso è necessario risolvere il conflitto manualmente. "git status" può essere utile in questo caso per vedere quali file hanno bisogno di essere risolti.

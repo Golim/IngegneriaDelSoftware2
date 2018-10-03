@@ -21,12 +21,12 @@ Organizza le modifiche al progetto che verranno salvate con un successivo commit
     git commit
 Cattura uno snapshot del progetto con le modifiche salvate al momento nel repository locale.
 
-Parametri:
+Opzioni:
 - -m "Messaggio"
 - -a: salva automaticamente i file che sono stati modificati o cancellati, ma non aggiunge eventuali nuovi file se non è specificato
 - --amend: modifica l'ultimo commit invece che crearne uno nuovo.
 ##
-    git checkout <id/nome>
+    git checkout 'id/nome'
 
 Ripristina la working directory ad un commit. Lo fa aggiornando il puntatore HEAD.
 
@@ -38,7 +38,7 @@ Permette di creare, listare, rinominare ed eliminare branch:
 - Creare: git branch "nome"
 - Cancellare: git branch -d "nome" (-D per forzare un branch non ancora completamente merged)
 
-    git merge <nome_branch>
+    git merge 'nome_branch'
 Unisce il branch passato come argomento al branch attuale (precedentemente impostato con git checkout).
 
     git clone
@@ -52,19 +52,30 @@ Aggiorna il repository locale con le modifiche del repository centrale.
 
     git remote
 Permette di creare, vedere ed eliminare connessioni ad altri repository:
-- Creare: git remote add <nome> <URL>
-- Eliminare: git remote rm <nome>
-- Rinominare: git remote rename <old> <new>
-- Visualizzare: git remote show <nome>
+- Creare: git remote add 'nome' 'URL'
+- Eliminare: git remote rm 'nome'
+- Rinominare: git remote rename 'old' 'new'
+- Visualizzare: git remote show 'nome'
 
-Parametri:
+Opzioni:
 - -v | --verbose: visualizza i nomi e i rispettivi URL.
+##
 
-    git remote add <nome> <URL>
+    git remote add 'nome' 'URL'
 In particolare, permette di collegare un repository locale, precedentemente creato con 'git init', ad un repository centrale.
 
-    git push <nome_remote> <nome_branch>
-Permette di salvare un branch che esiste solo localmente anche sul repository centrale puntato da <nome_remote>
+    git push 'nome_remote' 'nome_branch'
+Permette di salvare un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'
+
+    git fetch --all
+Permette di fare un fetch su tutti i remote registrati e i loro branch.
+
+    git merge origin/master
+Unisce i cambiamenti di un repository remoto con il proprio locale.
+
+    git push 'remote' 'branch'
+Carica il branch specificato nel repositori puntato da 'remote'.
+
 
 # Definizioni
 
@@ -96,5 +107,19 @@ Se in entrambi i branch che si intende unire si è modificata la stessa parte de
 #### Git remote
 E' un modo facile per passare URL a comandi come git push e pull. Quando si fa 'git clone', automaticamente viene creata una connessione remota chiamata origin, che punta al repository clonato, facilitando una successiva operazione 'git pull'. Le connessioni remote non sono altro che dei "Bookmark", un modo per riferirsi tramite dei semplici nomi a degli URL.
 
-#### Nuovo repository
-Quando si crea un nuovo repository locale con 'git init', per legarlo ad un repository centrale 
+#### Fetch
+Git fetch scarica i commit ed i file da un repository remoto al locale. Si usa 'git fetch' quando si intende vedere su cosa ha lavorato qualcun altro, non ci forza a fare un merge con le modifiche attualmente presenti attualmente in locale. Git fetch non ha assolutamente alcun effetto sul lavoro locale. I contenuti fetchati vanno poi esplicitamente checkati con git checkout.
+
+#### Pull
+Combina un 'git fetch' e unisce il contenuto del repository remoto con l'HEAD in un nuovo merge commit locale.
+
+![alt-text](img/pull_before.png "Prima")
+![alt-text](img/pull_after.png "Dopo")
+
+#### Push
+Carica il contenuto del repository locale in un repository remoto. E' la controparte di 'git fetch'. Git non permette di effettuare il push se il merge non sarà di tipo fast-forward. In tal caso, prima si deve fare 'git pull' e risolvere i conflitti, infine rieseguire 'git pull', oppure si può  utilizzare l'opzione --force.
+
+![alt-text](img/push_before.png "Prima")
+![alt-text](img/push_after.png "Dopo")
+
+#### PAGE: 

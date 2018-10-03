@@ -1,23 +1,24 @@
 # Riassunto GIT
+***
 
-## Comandi
+# Comandi
 
-     git init
+    git init
 Crea un nuovo repository.
 
-     git status
+    git status
 Mostra lo stato della working directory e della staging area.
     
-     git config --global user.name "name"
-     git config --global user.email email
+    git config --global user.name "name"
+    git config --global user.email email
 Imposta chi sono io.
 [Maggiori informazioni su git config](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
  "git config")
 
-     git add
+    git add
 Organizza le modifiche al progetto che verranno salvate con un successivo commit.
 
-     git commit
+    git commit
 Cattura uno snapshot del progetto con le modifiche salvate al momento nel repository locale.
 
 Parametri:
@@ -29,21 +30,38 @@ Parametri:
 
 Ripristina la working directory ad un commit. Lo fa aggiornando il puntatore HEAD.
 
-     git log
+    git log
 Mostra gli snapshot committati. Permette di vedere la cronologia del progetto, filtrarla e cercare specifiche modifiche.
 
-     git branch
+    git branch
 Permette di creare, listare, rinominare ed eliminare branch:
 - Creare: git branch "nome"
 - Cancellare: git branch -d "nome" (-D per forzare un branch non ancora completamente merged)
 
-     git merge <nome_branch>
+    git merge <nome_branch>
 Unisce il branch passato come argomento al branch attuale (precedentemente impostato con git checkout).
 
+    git clone
+Permette di ottenere una copia locale di un progetto precedentemente impostato in un repository centrale.
 
+    git push
+Aggiorna il repository centrale con le modifiche del repository centrale.
 
-## Definizioni
-___
+    git pull
+Aggiorna il repository locale con le modifiche del repository centrale.
+
+    git remote
+Permette di creare, vedere ed eliminare connessioni ad altri repository:
+- Creare: git remote add <nome> <URL>
+- Eliminare: git remote rm <nome>
+- Rinominare: git remote rename <old> <new>
+- Visualizzare: git remote show <nome>
+
+Parametri:
+- -v | --verbose: visualizza i nomi e i rispettivi URL.
+
+# Definizioni
+
 #### branch
 E' un puntatore ad un commit, non ha un nome leggibile. I branch sono utili quando si introduce una nuova feature o si fixa un bug per evitare di introdurre codice instabile nel main branch. In questo modo un branch può rappresentare una serie di commit.
 
@@ -69,4 +87,5 @@ Il fast-forward merge non è possibile se i branch hanno delle divergenze. Quest
 ##### Risolvere i conflitti di merging
 Se in entrambi i branch che si intende unire si è modificata la stessa parte dello stesso file, git non sarà in grado di capire quale mantenere. In questo caso è necessario risolvere il conflitto manualmente. "git status" può essere utile in questo caso per vedere quali file hanno bisogno di essere risolti.
 
-# Go on
+#### Git remote
+E' un modo facile per passare URL a comandi come git push e pull. Quando si fa 'git clone', automaticamente viene creata una connessione remota chiamata origin, che punta al repository clonato, facilitando una successiva operazione 'git pull'. Le connessioni remote non sono altro che dei "Bookmark", un modo per riferirsi tramite dei semplici nomi a degli URL.

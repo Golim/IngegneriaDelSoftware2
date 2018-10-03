@@ -60,6 +60,12 @@ Permette di creare, vedere ed eliminare connessioni ad altri repository:
 Parametri:
 - -v | --verbose: visualizza i nomi e i rispettivi URL.
 
+    git remote add <nome> <URL>
+In particolare, permette di collegare un repository locale, precedentemente creato con 'git init', ad un repository centrale.
+
+    git push <nome_remote> <nome_branch>
+Permette di salvare un branch che esiste solo localmente anche sul repository centrale puntato da <nome_remote>
+
 # Definizioni
 
 #### branch
@@ -89,3 +95,6 @@ Se in entrambi i branch che si intende unire si è modificata la stessa parte de
 
 #### Git remote
 E' un modo facile per passare URL a comandi come git push e pull. Quando si fa 'git clone', automaticamente viene creata una connessione remota chiamata origin, che punta al repository clonato, facilitando una successiva operazione 'git pull'. Le connessioni remote non sono altro che dei "Bookmark", un modo per riferirsi tramite dei semplici nomi a degli URL.
+
+#### Nuovo repository
+Quando si crea un nuovo repository locale con 'git init', per legarlo ad un repository centrale 

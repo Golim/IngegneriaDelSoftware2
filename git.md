@@ -76,6 +76,9 @@ Unisce i cambiamenti di un repository remoto con il proprio locale.
     git push 'remote' 'branch'
 Carica il branch specificato nel repositori puntato da 'remote'.
 
+    git rm --cached 'filename'
+Elimina il file specificato dal repository remoto. Omettendo '--cached' il file viene eliminato anche dal repository locale.
+
 
 # Definizioni
 
@@ -122,4 +125,15 @@ Carica il contenuto del repository locale in un repository remoto. E' la controp
 ![alt-text](img/push_before.png "Prima")
 ![alt-text](img/push_after.png "Dopo")
 
-#### PAGE: 
+#### Ignorare file
+I file nella nostra directory locale possono essere di tre tipi:
+- Tracked: precedentemente committati.
+- Untracked: file non committati.
+- Ignored: file che a Git è stato esplicitamente detto di ignorare.
+
+Sono solitamente file compilati o file generati dalla macchina.
+
+Per ignorare un file si deve aggiungere manualmente al file '.gitignore', che dev'essere poi committato. Nel file .gitignore è possibile aggiungere commenti utilizzando il carattere '#'.
+
+#### Stashing
+il comando 'git stash' ripone momentaneamente le modifiche fatte sulla nostra copia di lavoro, per poter lavorare su qualcos'altro ed in seguito tornare indietro e riapplicarle più tardi. E' molto utile quando si deve cambiare contesto e lavorare su altro, ma si è a metà di un cambiamento nel codice che non si è però pronti a committare. In pratica 'git stash' salva le modifiche attualmente non committate per un futuro utilizzo e le rimuove dalla cartella di lavoro attuale.

@@ -32,6 +32,10 @@ Opzioni:
 ##
     git checkout 'id/nome'
 
+Opzioni:
+- -b: crea il branch, se non esiste già.
+#
+
 Ripristina la working directory ad un commit. Lo fa aggiornando il puntatore HEAD.
 
     git log
@@ -54,6 +58,10 @@ Aggiorna il repository centrale con le modifiche del repository centrale.
 
     git pull
 Aggiorna il repository locale con le modifiche del repository centrale.
+Opzioni:
+- --rebase: effettua un rebase dei commit locali sulla punta del branch master dopo la sincronizzazione con le modifiche dal repository centrale.
+![alt-text](img/pull_rebase.png "Pull rebase")
+##
 
     git remote
 Permette di creare, vedere ed eliminare connessioni ad altri repository:
@@ -209,6 +217,9 @@ Crea un nuovo commit che annulla le modifiche effettuate, permettendo di mantene
 
 
 
+
+
+
 # Definizioni
 
 #### branch
@@ -307,3 +318,64 @@ Git salva le configurazioni in tre file, per poter decidere l'ambito a cui si ri
 - globale rispetto all'utente;
 - di sistema.
 
+#### Fork vs Clone
+Un fork di un repository non è altro che un clone server-side, generalmente gestito ed hostato da una parte terza rispetto al progetto ufficiale.
+
+#### Git Workflows
+E' un insieme di linee guida su come utilizzare Git per realizzare il lavoro in modo coerente e produttivo. Esistono molti workflow diversi, è importante sceglierlo in base alla cultura del team di lavoro, per evitare che diventi una limitazione alla produttività.
+
+E' importante considerare alcuni aspetti quando si valuta un workflow:
+- E' scalabile rispetto alla dimensione del team?
+- E' facile cancellare gli errori con questo workflow?
+- Questo workflow impone un inutile sovraccarico cognitivo al team?
+
+##### Workflow centralizzato
+Il branch di lavoro di default è chiamato master e tutte le modifiche sono committate in questo branch. Non prevede altri branch al di fuori del master. E' consigliabile per team molto piccoli. Il repository centrale è il progetto, quindi la sua cronologia deve essere trattata come sacra ed immutabile.
+
+![alt-text](img/workflow_centralizzato.png "Workflow centralizzato")
+
+##### Feature Beanch Workflow
+Lo sviluppo di ogni feature deve avvenire in un branch dedicato, invece che sul master. Questo workflow permette ad ogni sviluppatore di lavorare ad una feature senza disturbare la main codebase. Inoltre, il branch master non conterrà mai codice buggato o mal funzionante.
+
+I nomi dei branch devono essere esplicativi riguardo alla feature. I branch possono essere pushati sul repository centrale, senza intaccare il branch master in alcun modo, permettendo di condividere lo sviluppo di una feature con altri componenti del team.
+
+Azioni per la creazione di un branch dedicato ad una feature:
+- Si parte dal branch master aggiornato all'ultima versione dal repository centrale.
+- Si crea il nuovo branch.
+- Si lavora allo sviluppo della feature nel branch precedentemente creato.
+- Si pusha il nuovo branch sul repository centrale, per avere una copia di backup e per permettere la collaborazione con altri sviluppatori del team.
+- Pull request.
+
+###### Pull request
+Al termine dello sviluppo della feature, invece che effettuare immediatamente il merge del branch con il master, si effettua una 'pull request': una richiesta di unione del branch con la feature con il master. Questo procedimento permette agli altri sviluppatori di revisionare il codice prima che diventi parte della main codebase.
+
+##### Gitflow Workflow
+Questo workflow definisce un rigido modello di branching, sviluppato attorno alla release del progetto. Questo permette di avere una struttura robusta per lo sviluppo di progetti molto grandi.E' particolarmente indicato per progetti che hanno un ciclo di release ben definito.
+
+Questo workflow è molto simile al 'Feature Beanch Workflow', in aggiunta però assegna dei ruoli specifici ai branch e definisce come e quando devono interagire tra loro. Oltre ai branch previsti dal FBW, prevede l'utilizzo di branch specifici ed individuali per preparare, mantenere e registrare le release.
+
+Invece che utilizzare solamente il singolo branch master, per registrare la cronologia del progetto, ne usa due:
+- master branch: contiene la cronologia delle release ufficiali.
+- develop branch: serve da branch per l'integrazione delle feature.
+
+Si utilizzano i tag su ogni commit nel branch master, con il numero di versione della release.
+
+Principi:
+- Le feature non devono mai interagire direttamente con il branch master.
+- Quando sono state sviluppate abbastanza feature per fare una release, oppure si sta avvicinando la scadenza della prossima release, si fa un fork del branch develop per creare un nuovo branch release. Non si possono fare merge di feature su un branch release, si possono solo effettuare modifiche per bug-fix, documentazione e altre azioni orientate alla release. Quando la release sarà pronta si effettuerà un merge con il branch master e con il branch develop.
+- Sono previsti dei branch per effettuare degli hotfix: patchare velocemente una release in produzione. I branch hotfix sono creati con fork del branch master. Una volta che l'hotfix è completato si effettua il merge nel branch master.
+
+![alt-text](img/gitflow.png "Gitflow")
+
+##### Forking Workflow
+Ogni sviluppatore ha il proprio repository centrale, oltre al repository centrale comune. E' particolarmente utilizzato nello sviluppo di codice pubblico per progetti open-source. Con questo workflow, ogni sviluppatore può pushare modifiche solo sul suo repository centrale, e solamente il manutentore del progetto sarà in grado di pushare modifiche sul repository centrale comune. Questo permette al manutentore del progetto di accettare commit dagli sviluppatori, senza dovergli dare il permesso di scrittura sul repository ufficiale comune.
+
+Azioni dello sviluppatore, per contribuire allo sviluppo:
+- Fork del repository centrale ufficiale.
+- Clone del repository personale in locale.
+- Si aggiunge un remote per il repository ufficiale.
+- Si crea un nuovo branch feature.
+- Lo sviluppatore crea e committa le modifiche nel branch feature.
+- Il branch feature viene pushato sul repository personale dello sviluppatore.
+- Lo sviluppatore apre una 'pull request' al repository ufficiale.
+- La 'pull request' viene approvata ed è unita al repository ufficiale.

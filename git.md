@@ -65,10 +65,10 @@ Opzioni:
 In particolare, permette di collegare un repository locale, precedentemente creato con 'git init', ad un repository centrale.
 
     git push 'nome_remote' 'nome_branch'
-Permette di salvare un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'
+Salva un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'
 
     git fetch --all
-Permette di fare un fetch su tutti i remote registrati e i loro branch.
+Effettua un fetch su tutti i remote registrati e i loro branch.
 
     git merge origin/master
 Unisce i cambiamenti di un repository remoto con il proprio locale.
@@ -79,6 +79,26 @@ Carica il branch specificato nel repositori puntato da 'remote'.
     git rm --cached 'filename'
 Elimina il file specificato dal repository remoto. Omettendo '--cached' il file viene eliminato anche dal repository locale.
 
+    git stash
+Salva momentaneamente le modifiche fatte sulla nostra copia di lavoro, per poter lavorare ad altro e ripristinarle in seguito.
+
+Opzioni:
+- -u: salva i file tracked ed untracked.
+- -a: salva i file tracked, untracked e ignorati.
+![alt-text](img/stash.png "Opzioni git stash")
+##
+
+    git stash pop
+Riapplica le modifiche salvate precedentemente con 'git stash'.
+
+
+    git rebase 'branch_base'
+Riapplica i commit del branch attuale all'HEAD del branch passato.
+
+Opzioni:
+- -i: effettua un rebasing interattivo.
+- --continue: in caso di rilevamento di conflitti, continua.
+- --abort: in caso di rilevamento di conflitti, abortisce il processo. 
 
 # Definizioni
 
@@ -136,4 +156,21 @@ Sono solitamente file compilati o file generati dalla macchina.
 Per ignorare un file si deve aggiungere manualmente al file '.gitignore', che dev'essere poi committato. Nel file .gitignore è possibile aggiungere commenti utilizzando il carattere '#'.
 
 #### Stashing
-il comando 'git stash' ripone momentaneamente le modifiche fatte sulla nostra copia di lavoro, per poter lavorare su qualcos'altro ed in seguito tornare indietro e riapplicarle più tardi. E' molto utile quando si deve cambiare contesto e lavorare su altro, ma si è a metà di un cambiamento nel codice che non si è però pronti a committare. In pratica 'git stash' salva le modifiche attualmente non committate per un futuro utilizzo e le rimuove dalla cartella di lavoro attuale.
+Il comando 'git stash' ripone momentaneamente le modifiche fatte sulla nostra copia di lavoro, per poter lavorare su qualcos'altro ed in seguito tornare indietro e riapplicarle più tardi. E' molto utile quando si deve cambiare contesto e lavorare su altro, ma si è a metà di un cambiamento nel codice che non si è però pronti a committare. In pratica 'git stash' salva le modifiche attualmente non committate per un futuro utilizzo e le rimuove dalla cartella di lavoro attuale.
+
+#### Rebasing
+E' il processo che permette di muovere o combinare una sequenza di commit ad un nuovo commit di base. E' particolarmente utile quando si sta lavorando ad una feature in un branch secondario e si intende unirla al branch master. Invece che effettuare un merge diretto, si può fare un rebasing del branch secondario e successivamente fare il merge. Nel secondo caso il merge sarà di tipo fast-forward  e la cronologia risulterà più lineare.
+
+![alt-text](img/rebase_before.png "Prima")
+![alt-text](img/rebase_after.png "Dopo")
+
+Per effettuare il rebasing git crea dei nuovi commit e li applica alla nuova base, il branch risultante sarà quindi composto di branch completamente nuovi rispetto a quello di partenza.
+
+Risulta molto comodo anche per aggiornare il proprio repository locale con le modifiche del repository remoto. Git pull effettua infatti un merge commit superfluo ogni volta,  evitabile con il rebasing del branch locale. Inoltre è come affermare: "voglio basare i miei cambiamenti su ciò che tutti gli altri hanno già fatto".
+
+Effettuando il rebasing è possibile incorrere in conflitti. Si può rimediare effettuando il rebasing frequentemente.
+
+###### Rebasing interattivo
+Permette di modificare individualmente i commit che compongono il branch. Permette quindi di ottenere una cronologia più pulita rimuovendo, dividendo o modificando una serie esistente di commit. Il risultato sarà che al pubblico risulterà che la feature è stata sviluppata in una singola serie di ben pianificati commit.
+
+###### 

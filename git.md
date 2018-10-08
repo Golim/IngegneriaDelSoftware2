@@ -77,8 +77,15 @@ Unisce i cambiamenti di un repository remoto con il proprio locale.
     git push 'remote' 'branch'
 Carica il branch specificato nel repositori puntato da 'remote'.
 
-    git rm --cached 'filename'
-Elimina il file specificato dal repository remoto. Omettendo '--cached' il file viene eliminato anche dal repository locale.
+    git rm 'filename'
+Elimina il file specificato dal repository remoto e dal repository locale. Le modifiche effettuate da questo comando diventano persistenti solo una volta che si effettua un commit.
+
+Opzioni:
+- -f: ignora i controlli di sicurezza che fa git sul file, per assicurarsi che sia uguale nell'HEAD, staging area e working directory.
+- -r: rimuove ricorsivamente i file contenuti in una directory.
+- --cached: rimuove il file specificato solamente dal repository remoto.
+
+##
 
     git stash
 Salva momentaneamente le modifiche fatte sulla nostra copia di lavoro, per poter lavorare ad altro e ripristinarle in seguito.
@@ -100,6 +107,87 @@ Opzioni:
 - -i: effettua un rebasing interattivo.
 - --continue: in caso di rilevamento di conflitti, continua.
 - --abort: in caso di rilevamento di conflitti, abortisce il processo. 
+##
+
+    git tag 'nome_tag'
+Crea un tag di tipo lightweight al commit HEAD.
+
+Opzioni:
+- -a: crea un tag di tipo annotated.
+- -m "Messaggio".
+- -d 'tag': cancella il tag passato.
+##
+
+    git tag
+Visualizza la lista dei tag salvati nel repository.
+
+    git tag -a 'nome' 'id_commit'
+Crea un tag associato al commit passato.
+
+    git config
+Permette di configurare l'installazione locale. Si possono configurare:
+- informazioni dell'utente;
+- preferenze;
+- il comportamento di un repository.
+
+Opzioni:
+- --local: le modifiche passate saranno impostate solo per il repository locale corrente.
+- --global: le modifiche passate saranno impostate per l'utente corrente.
+- --system: le modifiche passate saranno impostate per tutti gli utenti sulla macchina corrente.
+- --edit: apre il file di configurazione.
+##
+
+    git diff
+Di default visualizza le modifiche non committate, dall'ultimo commit.
+
+Possibili utilizzi:
+- git diff 'commit_1' 'commit_2': confronta due commit, si possono passare come riferimenti ai commit HEAD, tag, nomi di branch.
+- git diff 'branch_1' 'branch_2' 'nome_file': confronta uno specifico file passato come argomento.
+##
+
+    git reset
+Muove la punta di un branch ad uno specifico commit. Di default resetta la staging area al commit più recente, lascia invece inalterata la working directory.
+
+Possibili utilizzi:
+- git reset 'commit' (o 'branch')
+
+Opzioni:
+- --soft: lo snapshot nella stagind area e la working directory attualmente mostrati non sono modificati.
+- --mixed: lo snapshot attuale viene aggiornato al nuovo commit specificato, la working directory non viene invece modificata.
+- --hard: sia lo snapshot che la working directory vengono aggiornati al commit specificato.
+
+![alt-text](img/reset.png "git reset")
+
+##
+
+    git revert
+Crea un nuovo commit che annulla le modifiche effettuate, permettendo di mantenere traccia della cronologia di tutte le modifiche.
+
+![alt-text](img/revert.png "git revert")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Definizioni
 
@@ -174,4 +262,32 @@ Effettuando il rebasing è possibile incorrere in conflitti. Si può rimediare e
 ###### Rebasing interattivo
 Permette di modificare individualmente i commit che compongono il branch. Permette quindi di ottenere una cronologia più pulita rimuovendo, dividendo o modificando una serie esistente di commit. Il risultato sarà che al pubblico risulterà che la feature è stata sviluppata in una singola serie di ben pianificati commit.
 
-#### 
+#### Tagging
+I tag sono dei riferimenti a punti specifici della cronologia. I tag sono solitamente utilizzati per marcare un punto che corrisponde ad una release.
+Di default, 'git push' non pusha i tag, devono essere quindi passati esplicitamente al comando:
+
+    git push origin 'nome_tag'
+
+E' possibile spostarsi al commit referenziato da un tag tramite 'git checkout nome_tag'.
+
+
+###### Tag annotated
+Oltre al nome del tag, permette di salvare altri metadati, quali il nome del tagger, l'email, la data, ...
+
+Una best practice è quella di considerare i tag lightweight come privati e quelli annotated come pubblici.
+
+#### Blaming
+E' un'utility per il troubleshootin. E' utilizzata per visualizzare i metadati allegati ad una specifica linea in un file committato.
+
+Solitamente il blaming è effettuato tramite una GUI su siti quali github o bitbucket.
+
+#### git config: Configurazione e setup
+Git salva le configurazioni in tre file, per poter decidere l'ambito a cui si riferiscono:
+- locale rispetto ad un repository;
+- globale rispetto all'utente;
+- di sistema.
+
+#### Annullare commit e cambiamenti
+
+##### Reset
+Muove un branch ad uno specifico commit.

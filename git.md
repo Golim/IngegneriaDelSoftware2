@@ -37,6 +37,7 @@ Mostra gli snapshot committati. Permette di vedere la cronologia del progetto, f
 Permette di creare, listare, rinominare ed eliminare branch:
 - Creare: git branch "nome"
 - Cancellare: git branch -d "nome" (-D per forzare un branch non ancora completamente merged)
+##
 
     git merge 'nome_branch'
 Unisce il branch passato come argomento al branch attuale (precedentemente impostato con git checkout).
@@ -173,4 +174,4 @@ Effettuando il rebasing è possibile incorrere in conflitti. Si può rimediare e
 ###### Rebasing interattivo
 Permette di modificare individualmente i commit che compongono il branch. Permette quindi di ottenere una cronologia più pulita rimuovendo, dividendo o modificando una serie esistente di commit. Il risultato sarà che al pubblico risulterà che la feature è stata sviluppata in una singola serie di ben pianificati commit.
 
-###### 
+#### 

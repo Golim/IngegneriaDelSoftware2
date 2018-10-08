@@ -16,10 +16,14 @@ Imposta chi sono io.
  "git config")
 
     git add
-Organizza le modifiche al progetto che verranno salvate con un successivo commit.
+Organizza le modifiche del progetto che verranno salvate con un successivo commit nella staging area.
 
     git commit
 Cattura uno snapshot del progetto con le modifiche salvate al momento nel repository locale.
+Opzioni:
+- --amend: sostituisce il commit più recente con uno nuovo a cui sono state applicate le modifiche salvate nella staging area. Sconsigliato per commit pubblici.
+- --no-edit: permette di fare amend senza modificare il messaggio del commit.
+##
 
 Opzioni:
 - -m "Messaggio"
@@ -106,7 +110,23 @@ Riapplica i commit del branch attuale all'HEAD del branch passato.
 Opzioni:
 - -i: effettua un rebasing interattivo.
 - --continue: in caso di rilevamento di conflitti, continua.
-- --abort: in caso di rilevamento di conflitti, abortisce il processo. 
+- --abort: in caso di rilevamento di conflitti, abortisce il processo.
+##
+
+    git rebase --interactive
+Effettua un rebasing interattivo.
+
+Opzioni:
+- p | pick: mantiene il commit.
+- r | reword: modifica il messaggio di un commit.
+- s | squash: unisce il commit a quello precedente e chiede di inserire un nuovo messaggio.
+- f | fixup: ignora il messaggio del commit e lo unisce al commit precedente.
+- e | edit: mantiene il commit, ma si ferma per fare amend.
+
+![alt-text](img/squash.png "squash")
+
+Se si elimina la riga di un commit dall'editor di testo, tale commit verrà perso.
+Se si eliminano tutte le righe, la procedura di rebase verrà abortita.
 ##
 
     git tag 'nome_tag'
@@ -287,7 +307,3 @@ Git salva le configurazioni in tre file, per poter decidere l'ambito a cui si ri
 - globale rispetto all'utente;
 - di sistema.
 
-#### Annullare commit e cambiamenti
-
-##### Reset
-Muove un branch ad uno specifico commit.

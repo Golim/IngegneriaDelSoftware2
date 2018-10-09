@@ -70,6 +70,8 @@ Aggiorna il repository centrale con le modifiche del repository centrale.
 Aggiorna il repository locale con le modifiche del repository centrale.
 Opzioni:
 - --rebase: effettua un rebase dei commit locali sulla punta del branch master dopo la sincronizzazione con le modifiche dal repository centrale.
+
+N.B *pull = fetch + merge*
 ![alt-text](img/pull_rebase.png "Pull rebase")
 ##
 
@@ -88,7 +90,7 @@ Opzioni:
 In particolare, permette di collegare un repository locale, precedentemente creato con 'git init', ad un repository centrale.
 
     git push 'nome_remote' 'nome_branch'
-Salva un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'.  *pull = fetch + merge*
+Salva un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'.  
 
     git fetch --all
 Effettua un fetch su tutti i remote registrati e i loro branch.

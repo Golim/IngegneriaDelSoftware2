@@ -2,11 +2,11 @@
 
 # Introduzione
 
-Un **V**ersion **C**ontrol **S**ystem è un sistema che permette a molte persone di lavorare sul medesimo file, richiedendo un intervento solo se vi sono conflitti.
+Un **V**ersion **C**ontrol **S**ystem è un sistema che registra, nel tempo, i cambiamenti ad un file o ad una serie di file, così da poter richiamare una specifica versione in un secondo momento. Qualsiasi file di un computer può essere posto sotto controllo di versione.
 
-Durante la stesura del codice, quando sono arrivato ad un punto in cui ho finito di creare una feature oppure sono state fatte una serie di modifiche sostanziali, si crea una **snapshot**, cioè una "foto" del codice in quel momento, avendo poi la possibilità di ripristinarlo successivamente.
+Quando si intende salvare il lavoro svolto, si crea uno **snapshot**, cioè una "foto" del progetto in quel determinato momento, avendo poi la possibilità di ripristinarlo successivamente.
 
-Grazie a questo è possibile avere un sistema di backup e vari tool per aiutare i programmatori.
+Un VCS è un ottimo sistema di backup.
 
 Git è il VCS più usato.
 
@@ -17,7 +17,7 @@ Crea un nuovo repository.
 
     git status
 Mostra lo stato della working directory e della staging area.
-N.B. I file *untracked* non sono gestiti dal versioning control 
+N.B.: I file *untracked* non sono gestiti dal versioning control 
     
     git config --global user.name "name"
     git config --global user.email email
@@ -71,7 +71,7 @@ Aggiorna il repository locale con le modifiche del repository centrale.
 Opzioni:
 - --rebase: effettua un rebase dei commit locali sulla punta del branch master dopo la sincronizzazione con le modifiche dal repository centrale.
 
-N.B *pull = fetch + merge*
+N.B.: *pull = fetch + merge*
 ![alt-text](img/pull_rebase.png "Pull rebase")
 ##
 

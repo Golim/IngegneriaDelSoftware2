@@ -47,3 +47,55 @@ Va notato che la nel secondo esempio si utilizza una funzione anonima.
 ## Funzioni anonime o lambda
 Una funzione anonima è una funzione dichiarata sul posto (dichiarata a runtime), caratterizzata dal fatto di non avere un nome.
 
+## Interazione con servizi online
+Tipicamente l'interazione tra un server http ed un client avviene online:
+
+1. Il browser manda una richiesta al server
+2. Il server manda una risposta al client
+
+Il client può essere uno script, invece che un browser web:
+```
+var https = require('https');
+
+var url = "https://esempio.it";
+
+https.get(url, function (resp) {
+    var data = "";
+
+    // I dati della risposta arrivano in uno stream
+    resp.on("data", function (chunk) {
+        data += chunk;
+    });
+
+    // Quando finisce lo stream
+    resp.on("end", function () {
+        console.log(data);
+    });
+
+}).on("error", function (err) {
+    console.log("Error: " + err.message);
+});
+```
+
+## JSON
+JSON sta per **J**ava**S**cript **O**bject **N**otation, è una sintassi per l'archiviazione e lo scambio di dati. E' testo, scritto con la notazione degli oggetti in JavaScript.
+
+Esempio:
+```
+{  
+    "date":"September 11",
+    "url":"https://wikipedia.org/wiki/September_11",
+    "data":{  
+        "Events":[  ],
+        "Births":[  ],
+        "Deaths":[  ]
+    }
+}
+```
+
+Per rendere il testo ottenuto come risposta ad una richiesta http in formato JSON si utilizza
+
+    var obj = JSON.parse(data);
+    console.log(obj.data);
+
+

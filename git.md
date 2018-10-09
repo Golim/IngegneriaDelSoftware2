@@ -1,5 +1,15 @@
 # Riassunto GIT
 
+# Introduzione
+
+Un **V**ersion **C**ontrol **S**ystem è un sistema che permette a molte persone di alvorare sul medesimo file, richiedendo un intervento solo se vi sono conflitti.
+
+Durante la stesura del codice, quando sono arrivato ad un punto in cui ho finito di creare una feature oppure sono state fatte una serie di modifiche sostanziali, si crea una **snapshot**, cioè una "foto" del codice in quel momento, avendo poi la possibilità di ripristinarlo successivamente.
+
+Grazie a questo è possibile avere un sistema di backup e vari tool per aiutare i programmatori.
+
+Git è il VCS più usato.
+
 # Comandi
 
     git init
@@ -7,6 +17,7 @@ Crea un nuovo repository.
 
     git status
 Mostra lo stato della working directory e della staging area.
+N.B. I file *untracked* non sono gestiti dal versioning control 
     
     git config --global user.name "name"
     git config --global user.email email
@@ -77,7 +88,7 @@ Opzioni:
 In particolare, permette di collegare un repository locale, precedentemente creato con 'git init', ad un repository centrale.
 
     git push 'nome_remote' 'nome_branch'
-Salva un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'
+Salva un branch che esiste solo localmente anche sul repository centrale puntato da 'nome_remote'.  *pull = fetch + merge*
 
     git fetch --all
 Effettua un fetch su tutti i remote registrati e i loro branch.

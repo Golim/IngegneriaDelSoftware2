@@ -2,7 +2,7 @@
 
 # Introduzione
 
-Un **V**ersion **C**ontrol **S**ystem è un sistema che permette a molte persone di alvorare sul medesimo file, richiedendo un intervento solo se vi sono conflitti.
+Un **V**ersion **C**ontrol **S**ystem è un sistema che permette a molte persone di lavorare sul medesimo file, richiedendo un intervento solo se vi sono conflitti.
 
 Durante la stesura del codice, quando sono arrivato ad un punto in cui ho finito di creare una feature oppure sono state fatte una serie di modifiche sostanziali, si crea una **snapshot**, cioè una "foto" del codice in quel momento, avendo poi la possibilità di ripristinarlo successivamente.
 

@@ -1,5 +1,4 @@
 # Riassunto GIT
-***
 
 # Comandi
 

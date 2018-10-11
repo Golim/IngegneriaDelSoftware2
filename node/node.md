@@ -180,7 +180,6 @@ app.listen(port, function() {
     console.log('Server running on port ', port);
 });
 ```
-<<<<<<< HEAD
 
 Grazie ad Express è possibile ascoltare a specifici metodi di http, (```app.get()```) e specificare il percorso (```/```), questo permette di focalizzarsi sui servizi che si vogliono implementare, senza preoccuparsi della logica per gestire le richieste.
 
@@ -215,5 +214,3 @@ Esistono diversi tipi di parsing:
 
 # RESTful APIs
 **Re**presentational **S**tate **T**ransfer è uno stile architetturale che definisce una serie di vincoli da applicare nella creazione di servizi web. I servizi web conformi all'architettura REST forniscono interoperabilità tra computer e sistemi online. 
-=======
->>>>>>> eaad8c3248a4ef222b57463dabe483fc2c312e33

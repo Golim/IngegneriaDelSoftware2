@@ -47,7 +47,7 @@ Va notato che la nel secondo esempio si utilizza una funzione anonima.
 ## Funzioni anonime o lambda
 Una funzione anonima è una funzione dichiarata sul posto (dichiarata a runtime), caratterizzata dal fatto di non avere un nome.
 
-## Interazione con servizi online
+## Client node: interazione con servizi online
 Tipicamente l'interazione tra un server http ed un client avviene online:
 
 1. Il browser manda una richiesta al server
@@ -98,4 +98,67 @@ Per rendere il testo ottenuto come risposta ad una richiesta http in formato JSO
     var obj = JSON.parse(data);
     console.log(obj.data);
 
+## Server node
+Per creare un server node si usa il modulo ```http```. Si deve definire la porta sulla quale il server resterà in ascolto.
 
+```
+var http = require('http');
+var port = 3000;
+
+var requestHandler = function(request, response) {
+    console.log(request.url);
+    response.end('Hello World!');
+}
+
+var server = http.createServer(requestHandler);
+server.listen(port);
+```
+
+## Package Management con ```npm```
+
+#### npm
+npm è un tool che permette di gestire le dipendenze di un progetto ed automatizzare workflow di sviluppo, similmente a ```make```.
+
+Per iniziare si utilizza:
+
+    npm init
+
+che genera il file ```package.json```, contentente alcune informazioni (metadati) riguardanti il nostro progetto. La struttura sarà simile a questa:
+
+```
+{
+    "name": "Nome",
+    "version": "1.0.0",
+    "description": "Descrizione",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Matteo",
+    "license": "ISC",
+    "dependancies": {
+        "nome modulo": "^1.0.0"
+    }
+}
+```
+
+#### Installare un modulo
+Per installare un modulo esterno si utilizza:
+
+    npm install --save 'nome modulo'
+
+Il parametro ```--save``` indica a npm di aggiungere il modulo alle dipendenze del progetto nel file ```package.json```.
+
+#### Disinstallare un modulo
+Per disinstallare un modulo si utilizza
+
+    npm uninstall 'nome modulo'
+
+Si può aggiungere il parametro ```--save``` per eliminare la dioendenza dal file ```package.json```.
+
+#### Automatizzare azioni
+npm permette di automatizzare alcune azioni utilizzando la proprietà ```scripts``` del file ```package.json```. I più comuni sono: prepublish, prepare, publish, preinstall, install, ...
+
+Si può trovare la lista completa [qui](https://docs.npmjs.com/misc/scripts "npm scripts").
+
+# Express

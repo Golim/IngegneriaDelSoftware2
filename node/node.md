@@ -81,7 +81,7 @@ https.get(url, function (resp) {
 JSON sta per **J**ava**S**cript **O**bject **N**otation, è una sintassi per l'archiviazione e lo scambio di dati. E' testo, scritto con la notazione degli oggetti in JavaScript.
 
 Esempio:
-```json
+```javascript
 {  
     "date":"September 11",
     "url":"https://wikipedia.org/wiki/September_11",
@@ -125,7 +125,7 @@ Per iniziare si utilizza:
 
 che genera il file ```package.json```, contentente alcune informazioni (metadati) riguardanti il nostro progetto. La struttura sarà simile a questa:
 
-```json
+```javascript
 {
     "name": "Nome",
     "version": "1.0.0",

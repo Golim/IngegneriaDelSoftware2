@@ -81,7 +81,7 @@ https.get(url, function (resp) {
 JSON sta per **J**ava**S**cript **O**bject **N**otation, è una sintassi per l'archiviazione e lo scambio di dati. E' testo, scritto con la notazione degli oggetti in JavaScript.
 
 Esempio:
-```json
+```javascript
 {  
     "date":"September 11",
     "url":"https://wikipedia.org/wiki/September_11",
@@ -125,7 +125,7 @@ Per iniziare si utilizza:
 
 che genera il file ```package.json```, contentente alcune informazioni (metadati) riguardanti il nostro progetto. La struttura sarà simile a questa:
 
-```json
+```javascript
 {
     "name": "Nome",
     "version": "1.0.0",
@@ -180,6 +180,7 @@ app.listen(port, function() {
     console.log('Server running on port ', port);
 });
 ```
+<<<<<<< HEAD
 
 Grazie ad Express è possibile ascoltare a specifici metodi di http, (```app.get()```) e specificare il percorso (```/```), questo permette di focalizzarsi sui servizi che si vogliono implementare, senza preoccuparsi della logica per gestire le richieste.
 
@@ -214,3 +215,5 @@ Esistono diversi tipi di parsing:
 
 # RESTful APIs
 **Re**presentational **S**tate **T**ransfer è uno stile architetturale che definisce una serie di vincoli da applicare nella creazione di servizi web. I servizi web conformi all'architettura REST forniscono interoperabilità tra computer e sistemi online. 
+=======
+>>>>>>> eaad8c3248a4ef222b57463dabe483fc2c312e33

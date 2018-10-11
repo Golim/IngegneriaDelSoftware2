@@ -25,7 +25,7 @@ Per leggere i parametri passati si accede alla variabile globale ```process```, 
     var libreria = require("nome");
 
 ## Accedere al file system
-```
+```javascript
 // Caricare la libreria per il file system
 var fs = require("fs");
 
@@ -35,7 +35,7 @@ var data = fs.readFileSync("fileName", "utf8");
 
 La funzione ```readFileSync``` legge il file in maniera sincrona, spesso però si desidera avere un comportamento asincrono, node.js è infatti progettato intorno al concetto di chiamate non bloccanti/asincrone.
 
-```
+```javascript
 // Accedere al contenuto di un file in maniera asincrona
 fs.readFile("fileName", "utf8", function(error, data) {
   console.log(data);
@@ -54,7 +54,7 @@ Tipicamente l'interazione tra un server http ed un client avviene online:
 2. Il server manda una risposta al client
 
 Il client può essere uno script, invece che un browser web:
-```
+```javascript
 var https = require('https');
 
 var url = "https://esempio.it";
@@ -81,7 +81,7 @@ https.get(url, function (resp) {
 JSON sta per **J**ava**S**cript **O**bject **N**otation, è una sintassi per l'archiviazione e lo scambio di dati. E' testo, scritto con la notazione degli oggetti in JavaScript.
 
 Esempio:
-```
+```json
 {  
     "date":"September 11",
     "url":"https://wikipedia.org/wiki/September_11",
@@ -101,7 +101,7 @@ Per rendere il testo ottenuto come risposta ad una richiesta http in formato JSO
 ## Server node
 Per creare un server node si usa il modulo ```http```. Si deve definire la porta sulla quale il server resterà in ascolto.
 
-```
+```javascript
 var http = require('http');
 var port = 3000;
 
@@ -125,7 +125,7 @@ Per iniziare si utilizza:
 
 che genera il file ```package.json```, contentente alcune informazioni (metadati) riguardanti il nostro progetto. La struttura sarà simile a questa:
 
-```
+```json
 {
     "name": "Nome",
     "version": "1.0.0",
@@ -154,11 +154,29 @@ Per disinstallare un modulo si utilizza
 
     npm uninstall 'nome modulo'
 
-Si può aggiungere il parametro ```--save``` per eliminare la dioendenza dal file ```package.json```.
+Si può aggiungere il parametro ```--save``` per eliminare la dipendenza dal file ```package.json```.
 
 #### Automatizzare azioni
 npm permette di automatizzare alcune azioni utilizzando la proprietà ```scripts``` del file ```package.json```. I più comuni sono: prepublish, prepare, publish, preinstall, install, ...
 
 Si può trovare la lista completa [qui](https://docs.npmjs.com/misc/scripts "npm scripts").
 
-# Express
+### Express
+Express è un web framework minimale e flessibile per lo sviluppo di applicazioni web node.js. Fornisce un robusto set di feature per le applicazioni web e mobile.
+
+Creare un web server con Express:
+```javascript
+var express = require('express');
+var app = express();
+
+var port = 3000;
+
+// Gestire le richieste GET
+app.get('/', function(req, res){ 
+    res.send('Hello World!');
+});
+
+app.listen(port, function() {
+    console.log('Server running on port ', port);
+});
+```

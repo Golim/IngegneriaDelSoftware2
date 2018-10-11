@@ -161,7 +161,7 @@ npm permette di automatizzare alcune azioni utilizzando la proprietà ```scripts
 
 Si può trovare la lista completa [qui](https://docs.npmjs.com/misc/scripts "npm scripts").
 
-### Express
+## Express
 Express è un web framework minimale e flessibile per lo sviluppo di applicazioni web node.js. Fornisce un robusto set di feature per le applicazioni web e mobile.
 
 Creare un web server con Express:
@@ -180,3 +180,37 @@ app.listen(port, function() {
     console.log('Server running on port ', port);
 });
 ```
+
+Grazie ad Express è possibile ascoltare a specifici metodi di http, (```app.get()```) e specificare il percorso (```/```), questo permette di focalizzarsi sui servizi che si vogliono implementare, senza preoccuparsi della logica per gestire le richieste.
+
+#### Distribuire file statici
+Express fornisce un meccanismo molto semplice per distribuire file statici, senza doversi preoccupare di controllare l'URL della richiesta, cercare il file nel file system e controllarne il formato per impostare gli header correttamente. E' sufficiente aggiungere:
+```javascript
+    app.use('/path', express.static('public'));
+```
+
+dove ```path``` è il percorso in cui i file saranno cercati. Il primo parametro può essere omesso.
+
+#### Gestire le richieste da un browser
+Come prima cosa è necessario installare la libreria 'body-parser', che permette di analizzare il body di una richiesta:
+
+    npm install --save body-parser
+
+In seguito si può caricare la libreria:
+```javascript
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded());
+
+// Accedere ai dati del form
+console.log(req.body);
+```
+
+Esistono diversi tipi di parsing:
+- **bodyParser.war()**: non effettua il parsing, ma mette i contenuti bufferizzati in un buffer in ```req.body```.
+- **bodyParser.text()**: analizza il buffer come testo e mette la stringa ottenuta in ```req.body```.
+- **bodyParser.urlencoded()**: analizza il testo come URL encoded data (come vengono mandati i dati di un form dai browser) e mette l'oggetto risultante in ```req.body```.
+- **bodyParser.json()**: analizza il testo come JSON e mette l'oggetto risultante in ```req.body```.
+
+# RESTful APIs
+**Re**presentational **S**tate **T**ransfer è uno stile architetturale che definisce una serie di vincoli da applicare nella creazione di servizi web. I servizi web conformi all'architettura REST forniscono interoperabilità tra computer e sistemi online. 

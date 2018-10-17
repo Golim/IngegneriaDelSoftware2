@@ -23,7 +23,7 @@ N.B.: I file *untracked* non sono gestiti dal versioning control
     git config --global user.email email
 Imposta chi sono io.
 [Maggiori informazioni su git config](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
- "git config")
+"git config")
 
     git add
 Organizza le modifiche del progetto che verranno salvate con un successivo commit nella staging area.
@@ -38,11 +38,10 @@ Opzioni:
 ##
     git checkout 'id/nome'
 
+Ripristina la working directory ad un commit. Lo fa aggiornando il puntatore HEAD.
 Opzioni:
 - -b: crea il branch, se non esiste già.
 #
-
-Ripristina la working directory ad un commit. Lo fa aggiornando il puntatore HEAD.
 
     git log
 Mostra gli snapshot committati. Permette di vedere la cronologia del progetto, filtrarla e cercare specifiche modifiche.

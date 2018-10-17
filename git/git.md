@@ -33,12 +33,8 @@ Cattura uno snapshot del progetto con le modifiche salvate al momento nel reposi
 Opzioni:
 - --amend: sostituisce il commit più recente con uno nuovo a cui sono state applicate le modifiche salvate nella staging area. Sconsigliato per commit pubblici.
 - --no-edit: permette di fare amend senza modificare il messaggio del commit.
-##
-
-Opzioni:
-- -m "Messaggio"
-- -a: salva automaticamente i file che sono stati modificati o cancellati, ma non aggiunge eventuali nuovi file se non è specificato
-- --amend: modifica l'ultimo commit invece che crearne uno nuovo.
+- -m "Messaggio".
+- -a: salva automaticamente i file che sono stati modificati o cancellati, ma non aggiunge eventuali nuovi file se non è specificato.
 ##
     git checkout 'id/nome'
 
@@ -64,7 +60,7 @@ Unisce il branch passato come argomento al branch attuale (precedentemente impos
 Permette di ottenere una copia locale di un progetto precedentemente impostato in un repository centrale.
 
     git push
-Aggiorna il repository centrale con le modifiche del repository centrale.
+Aggiorna il repository centrale con le modifiche del repository locale.
 
     git pull
 Aggiorna il repository locale con le modifiche del repository centrale.

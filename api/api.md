@@ -1,0 +1,17 @@
+# API
+
+
+
+
+
+
+
+"indentRainbow.colors": [
+    "rgba(46,204,113, 0.2)",
+    "rgba(52,152,219, 0.2)",
+    "rgba(231,76,60,0.2)",
+    "rgba(241,196,15, 0.2)",
+    "rgba(155,89,182, 0.2)"
+]
+// The indent color if the number of spaces is not a multiple of "tabSize".
+"indentRainbow.errorColor": "rgba(192,57,43,0.2)"

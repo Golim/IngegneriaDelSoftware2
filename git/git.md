@@ -201,33 +201,6 @@ Crea un nuovo commit che annulla le modifiche effettuate, permettendo di mantene
 
 ![alt-text](img/revert.png "git revert")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Definizioni
 
 #### branch

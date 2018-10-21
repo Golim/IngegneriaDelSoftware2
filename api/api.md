@@ -80,4 +80,56 @@ Ogni richiesta HTTP viene eseguita in un'isolazione completa. Per questo ogni ri
 
 #### Metodologie di progettazione
 - Identificare e nominare le risorse che saranno pubblicate dal servizio.
-- Modellare le relazioni tra risorse che possono essere seguite per avere 
+- Modellare le relazioni tra risorse che possono essere seguite per avere maggiori dettagli al riguardo.
+- Definire "buoni" URI per indirizzare le risorse.
+- Progettare e documentare le rappresentazioni delle risorse.
+
+##### URL
+Devono essere semplici ed intuitivi. Sì ai nomi, No ai verbi.
+
+Esempio:
+
+    SI: /actors
+    NO: /getAllActors
+
+E' bene prevedere 2 URL per risorsa:
+
+    /actors      // collezione di attori
+    /actors/1234 // specifico elemento della collezione
+
+Il livello dell'URL non dovrebbe essere troppo profondo.
+
+Per **filtrare** le risorse si utilizza il `?`. Esempio
+
+    /actors?gender=male&age=50
+
+
+### Gestire gli errori
+Per comunicare un errore si utilizzano i codici HTTP.
+
+Basilari:
+- **200** OK
+- **400** Bad Request
+- **500** Internal Server Error
+
+Specifici:
+- **201** Created
+- **304** Not modified
+- **401** Unauthorized
+- **403** Forbidden
+
+I messaggi nel body della risposta HTTP devono essere più dettagliati il possibile. E' una buona prassi inserire nella risposta un messaggio per lo sviluppatore ed uno per l'utente, oltre ad un codice prestabilito riguardante l'errore.
+
+### Versioning
+Un'API deve sempre avere un numero di versione. E' consigliabile mantenere almeno una versione precedente attiva.
+
+
+Sintassi consigliata: numero di versione nel primo elemento del path, con prefisso `v`. Esempio: `/v1/actors`
+
+### Pagination
+E' quasi sempre una cattiva idea ritornare tutte le risorse disponibili. Nei metadati si può includere il numero totale di risorse nella rappresentazione. E' consigliabile utilizzare limiti ed offset: `/movies?limit=20&offset=0`
+
+### Sottodominio per le API
+Le richieste API dovrebbero essere consolidate tramite un sottodominio. Esempio: `api.example.com`
+
+# Documentare le API

@@ -147,19 +147,31 @@ Per installare un modulo esterno si utilizza:
 
     npm install --save 'nome modulo'
 
-Il parametro ```--save``` indica a npm di aggiungere il modulo alle dipendenze del progetto nel file ```package.json```.
+Il parametro `--save` indica a npm di aggiungere il modulo alle dipendenze del progetto nel file `package.json`.
 
 #### Disinstallare un modulo
 Per disinstallare un modulo si utilizza
 
     npm uninstall 'nome modulo'
 
-Si può aggiungere il parametro ```--save``` per eliminare la dipendenza dal file ```package.json```.
+Si può aggiungere il parametro `--save` per eliminare la dipendenza dal file `package.json`.
 
 #### Automatizzare azioni
-npm permette di automatizzare alcune azioni utilizzando la proprietà ```scripts``` del file ```package.json```. I più comuni sono: prepublish, prepare, publish, preinstall, install, ...
+npm permette di automatizzare alcune azioni utilizzando la proprietà `scripts` del file `package.json`. I più comuni sono: prepublish, prepare, publish, preinstall, install, ...
 
 Si può trovare la lista completa [qui](https://docs.npmjs.com/misc/scripts "npm scripts").
+
+#### Start
+Per automatizzare la procedura di start si aggiunge al `package.json`:
+```javascript
+"scripts":{
+    "start": "node file.js args...",
+    // altro
+}
+```
+Per avviare l'applicazione in seguito basterà lanciare il comando
+
+    npm start
 
 ## Express
 Express è un web framework minimale e flessibile per lo sviluppo di applicazioni web node.js. Fornisce un robusto set di feature per le applicazioni web e mobile.

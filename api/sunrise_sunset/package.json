@@ -1,0 +1,12 @@
+{
+  "name": "sunrise_sunset",
+  "version": "1.0.0",
+  "description": "Un'applicazione che, preso uno stato ed una città, restituisce l'orario dell'alba e del tramonto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Golim",
+  "license": "ISC"
+}

@@ -5,7 +5,7 @@ var KEY = "eMKrrKGjAppIVAcuXL1NYqWIWEGbMVtR";
 var city = "Merano";
 var country = "IT";
 
-if(process.argv.length < 4){
+if (process.argv.length < 4) {
     console.log("Usage:   node index.js City   Country");
     console.log("Example: node index.js Merano IT");
     console.log("Default is Merano, IT\n\n");
@@ -50,8 +50,14 @@ https.get(url, function (resp) {
             resp.on("end", function () {
                 var obj = JSON.parse(data);
 
-                console.log("sunrise "+obj.results.sunrise);
-                console.log("sunset  "+obj.results.sunset);
+                var d = new Date();
+                var day = d.getMonth() + '/' + d.getDate() + '/' + d.getFullYear();
+
+                var dateSunrise = new Date(day + ' ' + obj.results.sunrise + ' UTC');
+                var dateSunset = new Date(day + ' ' + obj.results.sunset + ' UTC');
+
+                console.log("sunrise " + dateSunrise.getHours() + ':' + dateSunrise.getMinutes());
+                console.log("sunset  " + dateSunset.getHours() + ':' + dateSunset.getMinutes());
             });
 
         }).on("error", function (err) {

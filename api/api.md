@@ -20,6 +20,30 @@ In particolare, le Web API specificano come un'applicazione comunica con altre a
 ### Servizi Web
 Sono simili alle Web API. Sono costruiti sui principi di progettazione e sulle componenti del web. Forniscono delle **operazioni** e permettono lo **scambio di dati** strutturati in formati standard (JSON, XML, ...).
 
+## Caratteristiche delle API
+
+#### Semplicità
+E' importante mantenere le API più semplici il possibile. Ogni sviluppatore deve combattere la propria tendenza ad aggiungere complessità innecessaria, anche se pensa che possa aiutare. Fornire più modi per fare qualcosa è un'aggiunta inutile di complessità.
+
+#### Fornire astrazioni utili
+I dettagli dell'API devono essere nascosti all'utente, lasciando solo il necessario. All'utente devono essere presentate delle astrazioni.
+
+#### Consistenza
+Le stesse cose devono avere lo stesso nome ovunque e lo stile dei nomi deve essere comune.
+
+#### Seguire il principio del "Least Astonishment"
+Un sistema si deve comportare in modo consistente con come l'utente si aspetta che si comporti. L'utente non deve rimanere sorpreso dal modo in cui il programma si comporta.
+
+#### Pensare alle API come prodotto
+Non si deve pensare che l'utente, essendo anch'esso un programmatore, conosca quello che conosciamo noi. Le API devono essere sviluppate ponendosi nei panni dell'utente.
+
+## Architettura orientata ai servizi
+Ogni modulo del programma è organizzato in termini di servizi che operano indipendentemente ed interagiscono con altri servizi tramite API.
+
+Pensare in termini di API aiuta a pensare in termini di esporre le proprie funzionalità come un **servizio** alle persone. I servizi sono essenzialmente programmi accessibili tramite API, tipicamente tramite `http`.
+
+Si deve sviluppare il proprio programma in termini di funzioni che vengono offerte agli altri come servizi e si devono documentare le API bene abbastanza da permettere agli utenti di capire come usarle correttamente.
+
 ## API RESTfull
 
 ### Principi di progettazione
@@ -132,4 +156,5 @@ E' quasi sempre una cattiva idea ritornare tutte le risorse disponibili. Nei met
 ### Sottodominio per le API
 Le richieste API dovrebbero essere consolidate tramite un sottodominio. Esempio: `api.example.com`
 
-# Documentare le API
+## Documentare le API con `apiary.io`
+

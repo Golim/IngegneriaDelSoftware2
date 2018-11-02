@@ -149,6 +149,12 @@ Per installare un modulo esterno si utilizza:
 
 Il parametro `--save` indica a npm di aggiungere il modulo alle dipendenze del progetto nel file `package.json`.
 
+Se il modulo che si intende installare non è indispensabile per il funzionamento del progetto ed è usato solamente in fase di sviluppo (per il testing, per esempio), si utilizza:
+
+    npm install --save-dev 'nome modulo'
+
+Questo comando permette di evitare che la dipendenza venga installata quando qualcuno installa il nostro progetto.
+
 #### Disinstallare un modulo
 Per disinstallare un modulo si utilizza
 

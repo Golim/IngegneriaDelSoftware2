@@ -1,5 +1,5 @@
 # IngegneriaDelSoftware2
-Materiale vario di ingegneria del software 2 - UniTN 2018
+Materiale vario ed appunti di Ingegneria del Software 2 - UniTN 2018
 
 
 [Git](git/git.md "Git")
@@ -11,3 +11,7 @@ Materiale vario di ingegneria del software 2 - UniTN 2018
 [API](api/api.md "API")
 
 [Testing](testing/testing.md "Testing")
+
+[Esercitazione **git**](esercitazione/git.md "Esercitazione git")
+
+[Esercitazione **node.js**](esercitazione/node.md "Esercitazione node.js")

@@ -1,4 +1,4 @@
-# IngegneriaDelSoftware2
+# Ingegneria del Software 2
 Materiale vario ed appunti di Ingegneria del Software 2 - UniTN 2018
 
 

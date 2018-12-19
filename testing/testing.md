@@ -66,6 +66,9 @@ function foo(x, y){
     if (y == 0)
         x += 1;
 }
+
+
+foo(0, -1);
 ```
 Ha una copertura delle dichiarazioni del 100%, ma una copertura dei branch del 50%.
 

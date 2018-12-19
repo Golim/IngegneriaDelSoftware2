@@ -66,7 +66,6 @@ Aggiorna il repository locale con le modifiche del repository centrale.
 Opzioni:
 - --rebase: effettua un rebase dei commit locali sulla punta del branch master dopo la sincronizzazione con le modifiche dal repository centrale.
 
-N.B.: *pull = fetch + merge*
 ![alt-text](img/pull_rebase.png "Pull rebase")
 ##
 
@@ -231,7 +230,7 @@ Se in entrambi i branch che si intende unire si è modificata la stessa parte de
 E' un modo facile per passare URL a comandi come git push e pull. Quando si fa 'git clone', automaticamente viene creata una connessione remota chiamata origin, che punta al repository clonato, facilitando una successiva operazione 'git pull'. Le connessioni remote non sono altro che dei "Bookmark", un modo per riferirsi tramite dei semplici nomi a degli URL.
 
 #### Fetch
-Git fetch scarica i commit ed i file da un repository remoto al locale. Si usa 'git fetch' quando si intende vedere su cosa ha lavorato qualcun altro, non ci forza a fare un merge con le modifiche attualmente presenti attualmente in locale. Git fetch non ha assolutamente alcun effetto sul lavoro locale. I contenuti fetchati vanno poi esplicitamente checkati con git checkout.
+Git fetch scarica i commit ed i file da un repository remoto al locale. Si usa 'git fetch' quando si intende vedere su cosa ha lavorato qualcun altro, non ci forza a fare un merge con le modifiche attualmente presenti in locale. Git fetch non ha assolutamente alcun effetto sul lavoro locale. I contenuti fetchati vanno poi esplicitamente checkati con git checkout.
 
 #### Pull
 Combina un 'git fetch' e unisce il contenuto del repository remoto con l'HEAD in un nuovo merge commit locale.

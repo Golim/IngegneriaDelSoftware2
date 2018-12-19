@@ -1,0 +1,177 @@
+swagger: '2.0'
+
+info:
+  version: '1.0'
+  title: 'Simulazione esame - E1'
+  description: 
+
+host: TODO.herokuapp.com
+
+basePath: /api/v1
+schemes:
+- https
+
+consumes:
+- application/json
+produces:
+- application/json
+
+paths:
+  /users:
+    get:
+      summary: Return the list of all users
+      produces:
+        - application/json
+      responses:
+        200:
+          description: A json object with a number of users and an array with all users
+          examples:
+            'application/json':
+                count: 1 
+                users: [{
+                  "id": "5bfec803124054189263178d",
+                  "email": "example@example.it",
+                  "name": "example"
+                }]
+        500:
+          description: Internal server error
+
+    post:
+      tags:
+      - Users
+      summary: Add a new User to the system
+      operationId: addUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: User
+        description: The User to create
+        required: true
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        201:
+          description: Created
+          examples:
+            'application/json':
+                message: 'User created' 
+                user: {
+                  "deleted": 0,
+                  "_id": "5bffa00b0d3ba7179482fdc9",
+                  "email": "example@example.it",
+                  "password": "$2b$10$ui9zXd4NK2UAhUVeymaYpeCdpaUMFrAg6WyHrH3PV1jrNaWkv7yHe",
+                  "name": "example",
+                  "__v": 0
+                }
+        401:
+          description: Bad parameters
+        409:
+          description: User already exists
+        500:
+          description: Internal server error
+
+  /users/{userId}:
+    get:
+      summary: Return the User with the specified ID
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          type: string
+          description: The ID of the User
+      responses:
+        200:
+          description: A User object
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: The specified User ID is invalid
+        401:
+          description: User not found 
+        500:
+          description: Internal server error
+
+    put:
+      summary: Update an existing User
+      operationId: updateUser
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: userId
+        required: true
+        type: integer
+        description: The ID of the User
+      - in: body
+        name: user field(s)
+        description: The fields of user to update
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            name:
+              type: string
+      
+      responses:
+        200:
+          description: Updated
+        400:
+          description: Invalid ID supplied
+        401:
+          description: Bad Parameters 
+        500:
+          description: Internal server error
+
+    delete:
+      summary: Delete a User
+      operationId: deleteUser
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: header
+        required: false
+        type: string
+      - name: userId
+        in: path
+        description: User ID to delete
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          examples:
+            'application/json':
+              message": "User 5bffa00b0d3ba7179482fdc9 deleted!"
+        401:
+          description: A User with the specified ID was not found
+        500:
+          description: Internal server error
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 5bfec803124054189263178d
+      name:
+        type: string
+        example: Polpetta
+      email:
+        type: string
+        example: polpetta@mail.it
+      password:
+        type: string
+        example: $2b$10$UvjvmLckx3wEoeHrpiqJme7i7p0k84TwLCMSQ.QuSjkkqvHTuvOAe
+    required:
+      - id
+      - name
+      - email
+      - password
